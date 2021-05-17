@@ -11,6 +11,4 @@ navbar:
       href: about.html
     - text: "Blog"
       href: blog.html
-    - icon: fa fa-linkedin
-      href: https://www.linkedin.com/
 output: distill::distill_article
