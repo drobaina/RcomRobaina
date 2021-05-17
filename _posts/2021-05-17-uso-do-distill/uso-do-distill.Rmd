@@ -173,6 +173,51 @@ create_post(“nome”)
 Escreva seu post e não esqueça de complilar com o Knit antes de finalizar a página com o Build Website. 
 
 
+# Sexto Passo
 
+Selecione os arquivos na aba GIT 
+
+<center>
+```{r echo=FALSE, out.width = '50%'}
+knitr::include_graphics("gitrstudio.png")
+```
+</center>
+
+
+faça um commit e imediatamente um push. 
+
+
+
+
+# Sétimo Passo
+
+
+Você agora deve iniciar a pasta do Github para exibir como webpage.
+
+Abra o seu repositório e clique em settings
+
+<center>
+```{r echo=FALSE, out.width = '50%'}
+knitr::include_graphics("settings.png")
+```
+</center>
+
+Clique em pages
+
+
+<center>
+```{r echo=FALSE, out.width = '50%'}
+knitr::include_graphics("pages.png")
+```
+</center>
+
+E mude as configurações, como na imagem abaixo.
+
+
+<center>
+```{r echo=FALSE, out.width = '50%'}
+knitr::include_graphics("docs.png")
+```
+</center>
 
 
