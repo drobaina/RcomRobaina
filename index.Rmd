@@ -1,0 +1,6 @@
+---
+title: "Ensaios com o R"
+description: |
+  Ideias, projetos, aulas... 
+site: distill::distill_website
+---
