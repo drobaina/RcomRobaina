@@ -1,14 +1,26 @@
 [
   {
-    "path": "posts/2021-05-17-distill-primeiros-passos/",
-    "title": "Distill primeiros passos",
-    "description": "Como criar um website integrando o RStudio e o Github",
+    "path": "posts/2021-05-17-git-no-r/",
+    "title": "git no R",
+    "description": "Configurando o git no R",
     "author": [],
     "date": "2021-05-17",
     "categories": [],
-    "contents": "\n\n\n\n",
-    "preview": {},
-    "last_modified": "2021-05-17T15:16:06-03:00",
+    "contents": "\nPrimeiro Passo\nCrie uma conta gratuita no Github\n\n\n\nFigure 1: Github\n\n\n\nSegundo Passo\nFaça o download do GIT clicando aqui\nTerceiro Passo\nBaixe o Pacote Usethis e ative.\ninstall.packages(\"usethis\")\nlibrary(usethis)\nQuarto Passo - ATENÇÃO\nVá ao console do RStudio e cadastre no Git seu nome, e email.\nLembre-se que o e-mail deve ser o mesmo do seu cadastro no Github.\nusethis::use_git_config(user.name = \"SEU NOME\", \n            user.email = \"SEU E-MAIL CADASTRADO\") \nDeu pau?\nTente no GIT\nNo Git:\n$ git config --global user.name \"SEU NOME\"\n$ git config --global user.email SEU E-MAIL\nQuinto Passo\nConfigurar seu RStudio com os dados do seu Github.\nCrie um token no Github através do comando\nusethis::create_github_token()\nRenomeie\n\n\n\nFigure 2: Token\n\n\n\nE depois clique em Generate Token no final da página\n\n\n\nFigure 3: Generate Token\n\n\n\nClique em copiar, para copiar seu Token\n\n\n\nFigure 4: Novo Token\n\n\n\nAgora você deve inserir a chave copiada\nusethis::edit_r_environ()\nAbrirá o arquivo .Renviron e você vai digitar a chave em\nGITHUB_PAT =\nDepois salvar e começar a usar!\n\n\n\n",
+    "preview": "posts/2021-05-17-git-no-r/git.png",
+    "last_modified": "2021-05-17T09:38:04-03:00",
+    "input_file": {}
+  },
+  {
+    "path": "posts/2021-05-17-uso-do-distill/",
+    "title": "Uso do Distill ",
+    "description": "Usando o Distill",
+    "author": [],
+    "date": "2021-05-17",
+    "categories": [],
+    "contents": "\nPrimeiro passo\nCriar o repositório no Github.\n\n\n\n\n\nSegundo passo\nCopiar o nome do repositório criado\n\n\n\n\n\nSegundo Passo - outra opção\nCriar direto no console - sem ter que abrir o Github novamente\nusethis::create_project(\"aulas2\") \nDepois “chame” o GIT\nusethis::use_git()\nClique o número referente ao\nYeah - Absolutely\nDepois reiniciar\nFor sure - qualquer coisa parecida\nAgora “chame” o Github\nusethis::use_github()\nMarque que não tem o ssh e para criar o repositório\nTerceiro Passo\nIr no RStudio e criar um novo projeto\n\n\n\n\n\nMarcar o projeto como versão de controle\n\n\n\n\n\nAcionar o GIT\n\n\n\n\n\nE depois colar o nome do diretório criado no Github\n\n\n\n\n\nQuarto Passo\nInstalar o pacote Distill e chamá-lo\ninstall.packages(\"distill\")\nlibrary(distill)\nDepois vá ao console e crie o “objeto” com maior atratividade\n\n\n\n\n\nPara explorar um pouco mais a ferramenta criarei um website\ncreate_website(“ESCOLHA O DIRETÓRIO”, title = “Primeiros passos Distill” ) \n\nOs arquivos relacionados ao site serão “inseridos” dentro do diretório que você criou “ESCOLHA O DIRETÓRIO”.\nMova todos os documentos para o diretório “raiz” e exclua o diretório “ESCOLHA O DIRETÓRIO”.\nAtenção\nAbra o arquivo _site.yml e mude a linha output_dir: \"_site\" para output_dir: \"docs\".\nEste passo é fundamental para “carregar” o site no Github.\nQuinto Passo\nPara criar o blog você deve criar um novo arquivo RMarkdown e nomeá-lo como blog.\n\n\n\n\n\nForce o cabeçalho a incluir a seguinte descrição\ntitle: \"Blog\"\nlisting: posts\nApós mudar o cabeçalho crie seu primeiros post.\nlibrary(distill)\ncreate_post(“nome”) \nEscreva seu post e não esqueça de complilar com o Knit antes de finalizar a página com o Build Website.\n\n\n\n",
+    "preview": "posts/2021-05-17-uso-do-distill/repositorio.png",
+    "last_modified": "2021-05-17T13:48:34-03:00",
     "input_file": {}
   }
 ]
