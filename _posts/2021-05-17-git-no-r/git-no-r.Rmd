@@ -90,8 +90,10 @@ usethis::edit_r_environ()
 Abrirá o arquivo .Renviron e você vai digitar a chave em 
 
 ```
-GITHUB_PAT =
+GITHUB_PAT ="SEU TOKE"
 ```
+
+Deixe uma linha em branco abaixo e ... 
 
 Depois salvar e começar a usar! 
 

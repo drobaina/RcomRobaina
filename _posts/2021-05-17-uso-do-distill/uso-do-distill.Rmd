@@ -215,7 +215,7 @@ E mude as configurações, como na imagem abaixo.
 
 
 <center>
-```{r echo=FALSE, out.width = '50%'}
+```{r echo=FALSE, out.width = '80%'}
 knitr::include_graphics("docs.png")
 ```
 </center>

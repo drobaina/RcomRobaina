@@ -1,0 +1,150 @@
+---
+title: "Explorando alguns gráficos"
+description: |
+  Análise potencial de gráficos
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r , echo = F }
+library(ggplot2)
+library(ggExtra)
+library(dplyr)
+library(tibble)
+library(gridExtra)
+library(plotly)
+# chamando os 20 primeiros resultados do mtcars
+data=head(mtcars, 20)
+# adicionar a coluna nome dos carros com o tibble
+data <- data %>%
+  rownames_to_column(var="carName")
+```
+
+
+# Gráfico de pontos
+
+
+```{r , echo = T }
+# nudge_x e nudge_y fonte dos eixos
+# check_overlap não deixar a imagem sobrepor textos
+ggplot(data, aes(x=wt, y=mpg)) +
+  geom_point() + # mostrar pontos
+  geom_text(
+    label=rownames(data), 
+    nudge_x = 0.25, nudge_y = 0.25, 
+    check_overlap = T
+  )
+```
+
+```{r , echo = T }
+# criar o gráfico 
+ggplot(data, aes(x=wt, y=mpg)) +
+  geom_point() + 
+  geom_label( 
+    data=data %>% filter(mpg>20 & wt>3), 
+    aes(label=carName)
+  )
+``` 
+
+
+```{r , echo = T }
+# gráfico padrão
+p <- ggplot(mtcars, aes(x=wt, y=mpg, color=cyl, size=cyl)) +
+      geom_point() +
+      theme(legend.position="none")
+```
+
+```{r , echo = T }
+# marginal histogram
+ ggMarginal(p, type="histogram")
+```
+
+
+```{r , echo = T }
+# marginal density
+ ggMarginal(p, type="density")
+```
+
+```{r , echo = T }
+# marginal boxplot
+ggMarginal(p, type="boxplot")
+```
+
+
+# Múltiplos gráficos
+
+```{r , echo = T }
+# dividido por colunas - padrão
+ggplot( mtcars , aes(x=mpg, y=wt, color=as.factor(cyl) )) + 
+  geom_point(size=3) +  
+  facet_wrap(~cyl) +
+  theme(legend.position="none")
+
+```
+
+```{r , echo = T }
+# dividido por linhas
+ggplot( mtcars , aes(x=mpg, y=wt, color=as.factor(cyl)  )) + 
+  geom_point(size=3) +  
+  facet_wrap(~cyl , dir="v")  +
+  theme(legend.position="none")
+```
+
+```{r , echo = T }
+# adicionar etiqueta na parte inferior
+ggplot( mtcars , aes(x=mpg, y=wt, color=as.factor(cyl)  )) + 
+  geom_point(size=3) +  
+  facet_wrap(~cyl , strip.position="bottom") +
+  theme(legend.position="none")
+```
+
+```{r , echo = T }
+# Use as mesmas escalas para todos
+ggplot( mtcars , aes(x=mpg, y=wt, color=as.factor(cyl)  )) + 
+  geom_point(size=3) +  
+  facet_wrap(~cyl , scales="free" ) +
+  theme(legend.position="none")
+```
+
+```{r , echo = T }
+# todos os detalhes usando facet_grid():
+ggplot( mtcars , aes(x=mpg, y=wt )) + 
+  geom_point() +
+  facet_grid( cyl ~ gear)
+```
+
+```{r , echo = T }
+# gráficos independentes
+g1 <- ggplot(mtcars, aes(x=qsec)) + geom_density(fill="slateblue")
+g2 <- ggplot(mtcars, aes(x=drat, y=qsec, color=cyl)) + geom_point(size=5) + theme(legend.position="none")
+g3 <- ggplot(mtcars, aes(x=factor(cyl), y=qsec, fill=cyl)) + geom_boxplot() + theme(legend.position="none")
+g4 <- ggplot(mtcars , aes(x=factor(cyl), fill=factor(cyl))) +  geom_bar()
+ 
+grid.arrange(g2, arrangeGrob(g3, g4, ncol=2), nrow = 2)
+grid.arrange(g1, g2, g3, nrow = 3)
+grid.arrange(g2, arrangeGrob(g3, g4, ncol=2), nrow = 1)
+grid.arrange(g2, arrangeGrob(g3, g4, nrow=2), nrow = 1)
+```
+
+# Gráfico de áreas
+
+O pacote Plotly cria gráficos interativos da web a partir de gráficos `ggplot2` e/ou uma interface personalizada para a biblioteca JavaScript (MITlicensed) `plotly.js` inspirada na gramática dos gráficos.
+
+```{r , echo = T }
+# Create data
+var1 <- seq(1,8)
+var2 <- c(0,1,4,1,8,7,5,4)
+var3 <- c(7,8,4,2,1,2,0,1)
+
+# Area chart with 2 groups
+p <- plot_ly(x = var1, y = var2, type="scatter", mode="markers", fill = "tozeroy")
+p <- add_trace(p, x = var1, y = var3, type="scatter", mode="markers", fill = "tonexty")
+p
+```
+
+
+# Referências
+
+1. [https://www.r-graph-gallery.com/](https://www.r-graph-gallery.com/)
+
